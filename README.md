@@ -20,3 +20,7 @@ npm test       # runs the test suite
 ## Release history
 
 See [CHANGELOG.md](./CHANGELOG.md).
+
+## Rate limiting
+
+The public API gateway enforces per-token and per-IP rate limits via `src/rateLimit.js`. Defaults are 600 req/min per token and 120 req/min per IP. Partner-specific quotas can be supplied via the `partners` config map at startup.
