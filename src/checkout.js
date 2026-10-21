@@ -15,6 +15,10 @@ function isRetriable(err) {
 }
 
 async function capturePayment(client, order) {
+  // The provider's v2 SDK requires the Idempotency-Key header on every attempt,
+  // not just the first — otherwise the retry hits a NPE on their side and we
+  // bubble a 500 back to the caller. Thread the key through every call.
+  const idempotencyKey = order.idempotencyKey || order.id;
   let lastError;
   for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
     try {
@@ -22,6 +26,7 @@ async function capturePayment(client, order) {
         orderId: order.id,
         amount: order.total,
         currency: order.currency,
+        headers: { 'Idempotency-Key': idempotencyKey },
       });
       return result;
     } catch (err) {
