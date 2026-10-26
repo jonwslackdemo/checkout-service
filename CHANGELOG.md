@@ -4,6 +4,9 @@ All notable changes to this project are documented here. This project follows [S
 
 ## [Unreleased]
 
+### Fixed
+- `capturePayment` now sends the `Idempotency-Key` header on every retry attempt (PLAT-1). Fixes 500s surfaced during INC-1.
+
 ## [2.13.0] - 2026-10-07
 
 ### Added
