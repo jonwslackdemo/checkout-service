@@ -7,6 +7,10 @@ const DEFAULT_LIMITS = {
   // requests per minute
   perToken: 600,
   perIp: 120,
+  // partner tier quotas (requests per minute) - proposed values, PLAT-4
+  partnerFree: 60,
+  partnerStandard: 300,
+  partnerEnterprise: 1500,
 };
 
 function createLimiter({ now = Date.now, partners = {} } = {}) {
