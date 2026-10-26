@@ -1,0 +1,13 @@
+{
+  "name": "checkout-service",
+  "version": "2.14.0",
+  "description": "Service that handles payment capture for customer-facing transactions.",
+  "private": true,
+  "main": "src/checkout.js",
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
